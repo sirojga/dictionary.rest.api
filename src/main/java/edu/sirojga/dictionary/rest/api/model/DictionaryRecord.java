@@ -16,7 +16,7 @@ public class DictionaryRecord {
         this.translation = translation;
     }
 
-    public List<String> record(){
+    public List<String> getRecord(){
         return List.of(sourceLanguage,translateLanguage,word,translation);
     }
 }
