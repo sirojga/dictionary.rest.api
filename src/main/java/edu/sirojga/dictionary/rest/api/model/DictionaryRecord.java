@@ -4,19 +4,24 @@ import java.util.List;
 
 public class DictionaryRecord {
 
-    final String sourceLanguage;
-    final String translateLanguage;
     final String word;
     final String translation;
+    Boolean isLearned = false;
 
-    public DictionaryRecord(String sourceLanguage, String translateLanguage, String word, String translation) {
-        this.sourceLanguage = sourceLanguage;
-        this.translateLanguage = translateLanguage;
+    public DictionaryRecord(String word, String translation) {
         this.word = word;
         this.translation = translation;
     }
 
     public List<String> getRecord(){
-        return List.of(sourceLanguage,translateLanguage,word,translation);
+        return List.of(word,translation);
+    }
+
+    public void setLearned(){
+        isLearned=true;
+    }
+
+    public void setUnlearned(){
+        isLearned=false;
     }
 }

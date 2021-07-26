@@ -26,7 +26,6 @@ public class XlsxParser {
 
         List<List<String>> data = new ArrayList<>();
 
-
         for(Sheet sheet : workbook){
             for (Row row : sheet) {
                 List<String> record = new ArrayList<>();
