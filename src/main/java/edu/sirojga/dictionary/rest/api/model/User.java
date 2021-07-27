@@ -1,10 +1,12 @@
 package edu.sirojga.dictionary.rest.api.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 import java.util.Map;
 
+@Document
 public class User {
 
     @Id

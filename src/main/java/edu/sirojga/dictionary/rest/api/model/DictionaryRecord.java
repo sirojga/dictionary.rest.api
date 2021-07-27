@@ -1,20 +1,38 @@
 package edu.sirojga.dictionary.rest.api.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
+@Document
 public class DictionaryRecord {
 
-    final String word;
-    final String translation;
-    Boolean isLearned = false;
+    private final String word;
+    private final String translation;
+    private String picture;
+    private Boolean isLearned = false;
 
     public DictionaryRecord(String word, String translation) {
         this.word = word;
         this.translation = translation;
     }
 
+    public DictionaryRecord(String word, String translation, String picture) {
+        this.word = word;
+        this.translation = translation;
+        this.picture=picture;
+    }
+
     public List<String> getRecord(){
         return List.of(word,translation);
+    }
+
+    public void setPicture(String base64Picture){
+        this.picture=base64Picture;
+    }
+
+    public String getPicture(){
+      return this.picture;
     }
 
     public void setLearned(){
