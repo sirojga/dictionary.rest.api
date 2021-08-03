@@ -7,10 +7,13 @@ import java.util.List;
 @Document
 public class DictionaryRecord {
 
-    private final String word;
-    private final String translation;
+    private String word;
+    private String translation;
     private String picture;
     private Boolean isLearned = false;
+
+    public DictionaryRecord() {
+    }
 
     public DictionaryRecord(String word, String translation) {
         this.word = word;
@@ -21,10 +24,6 @@ public class DictionaryRecord {
         this.word = word;
         this.translation = translation;
         this.picture=picture;
-    }
-
-    public List<String> getRecord(){
-        return List.of(word,translation);
     }
 
     public void setPicture(String base64Picture){
@@ -41,5 +40,15 @@ public class DictionaryRecord {
 
     public void setUnlearned(){
         isLearned=false;
+    }
+
+    @Override
+    public String toString() {
+        return "DictionaryRecord{" +
+                "word='" + word + '\'' +
+                ", translation='" + translation + '\'' +
+                ", picture='" + picture + '\'' +
+                ", isLearned=" + isLearned +
+                '}';
     }
 }

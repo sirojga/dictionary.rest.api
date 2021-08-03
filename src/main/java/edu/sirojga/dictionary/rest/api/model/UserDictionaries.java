@@ -3,17 +3,18 @@ package edu.sirojga.dictionary.rest.api.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Document
-public class UserDictionary {
+public class UserDictionaries {
     @Id
     String userId;
-    List<ListOfDictionaries> dictionaries;
+    HashSet<Dictionary> dictionaries;
 
-    public UserDictionary(String userId, List<ListOfDictionaries> dictionaries) {
-        this.userId = userId;
-        this.dictionaries = dictionaries;
+    public UserDictionaries() {
+
     }
 
     public String getUserId() {
@@ -24,11 +25,15 @@ public class UserDictionary {
         this.userId = userId;
     }
 
-    public List<ListOfDictionaries> getDictionaries() {
+    public HashSet<Dictionary> getDictionaries() {
         return dictionaries;
     }
 
-    public void setDictionaries(List<ListOfDictionaries> dictionaries) {
-        this.dictionaries = dictionaries;
+    public void addDictionary(Dictionary dictionary) {
+        if(this.dictionaries==null){
+            this.dictionaries = new HashSet<>();
+        }
+
+        this.dictionaries.add(dictionary) ;
     }
 }

@@ -1,9 +1,11 @@
 package edu.sirojga.dictionary.rest.api.repository;
 
-import edu.sirojga.dictionary.rest.api.model.UserDictionary;
+import edu.sirojga.dictionary.rest.api.model.UserDictionaries;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
-import java.util.Optional;
+public interface UserDictionaryRepo extends MongoRepository<UserDictionaries, String> {
 
-public interface UserDictionaryRepo extends MongoRepository<UserDictionary, String> {
+    @Query("{ '_id' : ?0 }")
+    UserDictionaries test(String name);
 }
