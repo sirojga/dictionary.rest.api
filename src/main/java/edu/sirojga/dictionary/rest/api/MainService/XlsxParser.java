@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -16,15 +17,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class XlsxParser {
 
-    final private Workbook workbook;
+    private Workbook workbook;
 
-    public XlsxParser(InputStream inputStream) throws IOException {
-        this.workbook=new XSSFWorkbook(inputStream);
-    }
-    public List<List<String>> xlsxToList(){
+    public List<List<String>> xlsxToList(InputStream inputStream) throws IOException {
 
+        workbook=new XSSFWorkbook(inputStream);
         List<List<String>> data = new ArrayList<>();
 
         for(Sheet sheet : workbook){

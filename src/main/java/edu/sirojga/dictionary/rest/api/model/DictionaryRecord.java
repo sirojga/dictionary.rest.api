@@ -7,6 +7,7 @@ import java.util.List;
 @Document
 public class DictionaryRecord {
 
+    private String id;
     private String word;
     private String translation;
     private String picture;
@@ -40,6 +41,30 @@ public class DictionaryRecord {
 
     public void setUnlearned(){
         isLearned=false;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public String getTranslation() {
+        return translation;
+    }
+
+    public void setTranslation(String translation) {
+        this.translation = translation;
+    }
+
+    public Boolean getLearned() {
+        return isLearned;
+    }
+
+    public void setLearned(Boolean learned) {
+        isLearned = learned;
     }
 
     @Override

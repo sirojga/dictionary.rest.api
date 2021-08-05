@@ -1,5 +1,6 @@
 package edu.sirojga.dictionary.rest.api.model;
 
+import edu.sirojga.dictionary.rest.api.exceptions.NotFoundException;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +15,7 @@ public class UserDictionaries {
     HashSet<Dictionary> dictionaries;
 
     public UserDictionaries() {
-
+        this.dictionaries = new HashSet<>();
     }
 
     public String getUserId() {
@@ -36,4 +37,13 @@ public class UserDictionaries {
 
         this.dictionaries.add(dictionary) ;
     }
+
+    public void deleteDictionary(String languagePair) {
+        dictionaries.remove(dictionaries.stream().
+                filter(x->x.getLanguagePair().equals(languagePair)).
+                findFirst().orElseThrow(()-> new NotFoundException(String.format("Dictionary with userId = %s and language pair = %s not found",userId,languagePair))));
+    }
+
+
+
 }
