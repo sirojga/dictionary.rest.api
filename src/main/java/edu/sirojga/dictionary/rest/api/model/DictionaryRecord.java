@@ -1,5 +1,6 @@
 package edu.sirojga.dictionary.rest.api.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 @Document
 public class DictionaryRecord {
 
+    @Id
     private String id;
     private String word;
     private String translation;
@@ -65,6 +67,14 @@ public class DictionaryRecord {
 
     public void setLearned(Boolean learned) {
         isLearned = learned;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
